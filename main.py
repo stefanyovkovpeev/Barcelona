@@ -1,9 +1,9 @@
 import os
 import sys
-from login import User1
+from login.login import User1
 import tkinter
 from tkinter import *
-from tkinter import font, scrolledtext, ttk, filedialog, Tk, Canvas, messagebox, Scrollbar
+from tkinter import font, scrolledtext, ttk, filedialog, Tk, Canvas, messagebox
 from PIL import Image, ImageTk
 from structure.structure import TkinterTerminal, TimeKeeping, WeatherWidget
 from DBSQLLITE import allnavigations, alllocations, restaurant_data, clubs_data
@@ -238,9 +238,10 @@ def register(button_id):
     month = month_var.get()
     year = year_entry.get()
     email_pattern = re.compile(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
-
+    birthdate = datetime.strptime(f"{month} {day} {year}", "%B %d %Y")
+    current_date = datetime.now()
     if year:
-        years_user = int(int(datetime.now().year) - int(year))
+        years_user = current_date.year - birthdate.year - ((current_date.month, current_date.day) < (birthdate.month, birthdate.day))
         birthday_string = str(f"{month} {day}")
 
     if len(username) > 18 or len(username) < 5:
@@ -580,6 +581,8 @@ def show_clubs_weedshops():
         canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
 
         canvas.bind("<Configure>", on_configure)
+    else:
+        messagebox.showinfo("Грешка","Трябва да имате навършени 18 години, за да отворите!")
 
 
 restaurant_button = Button(app_frame, text="🍽 Ресторанти", font=("Arial", 15), command=show_restaurants_frame)

@@ -4,8 +4,7 @@ from datetime import datetime
 from time import *
 from tkinter import scrolledtext
 import pytz as pytz
-import login
-import os
+from login import login
 import requests
 
 #the abstract methods are because at fist it was built like a game and it had different players
