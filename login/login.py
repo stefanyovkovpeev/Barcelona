@@ -4,28 +4,25 @@ from PIL import Image, ImageTk
 import sqlite3
 
 
-conn = sqlite3.connect('SQL3DB.db')
-
-mycursor = conn.cursor()
-
-mycursor.execute("select * from users")
-userinfo=[]
-for x in mycursor:
-    for y in x:
-     userinfo.append(y)
-
-if len(userinfo) > 0:
-        username, stored_hashed_password, email, birthdate, years, img_path = userinfo
-        if not img_path:
-            img_path = "Pictures/Anonymous.png"
-else:
-        img_path = "Pictures/Anonymous.png"
-
-
 
 class User1(Player):
 
     def __init__(self):
+        conn = sqlite3.connect('SQL3DB.db')
+        mycursor = conn.cursor()
+        mycursor.execute("select * from users")
+
+        userinfo = []
+        for x in mycursor:
+            for y in x:
+                userinfo.append(y)
+        if len(userinfo) > 0:
+            username, stored_hashed_password, email, birthdate, years, img_path = userinfo
+            if not img_path:
+                img_path = "Pictures/Anonymous.png"
+        else:
+            img_path = "Pictures/Anonymous.png"
+
         self.name = ""
         self.years = ""
         self.user1_img_uploaded = img_path
