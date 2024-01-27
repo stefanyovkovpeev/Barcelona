@@ -8,6 +8,7 @@ It has a user for testing already registered
 Username - usertest
 password - usertest1@
 For login information.
+The app uses API keys that I have removed from the code uploaded on github, you can either generate your own free api keys or ask me for mine.
 
 The app is in Bulgarian since it was made for my family. But the functionality of the buttons and what everything is about is pretty self evident since it is a very simple app.
 
@@ -16,6 +17,7 @@ The app is in Bulgarian since it was made for my family. But the functionality o
 Има .exe файл в хранилището направен с pyinstaller, така че ще работи без нищо предварително инсталирано.
 Когато работи на други компютри, откривам, че настройките на дисплея, различни от тези на моя компютър, правят екрана му по-голям отколкото трябва да бъде и не показва правилно приложението.
 Настройките трябва да са 125% в мащаб и 1920x1080, за да работят правилно.
+Приложението използва API ключове, които премахнах от кода, качен в github, можете или да генерирате свои собствени безплатни API ключове, или да ме помолите за моя.
 
 Има вече регистриран потребител за тестване
 Потребителско име - usertest
