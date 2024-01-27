@@ -53,7 +53,7 @@ class App:
 
 
 
-    #View
+    #VIEW
     def setup_root(self):
         self.root = Tk()
         self.root.resizable(0, 0)
@@ -259,7 +259,6 @@ class App:
         self.pil_img = Image.open(self.img_path)
         self.pil_img = self.pil_img.resize((400, 400), Image.BICUBIC)
         self.img = ImageTk.PhotoImage(self.pil_img)
-        global picture_label, img_reference
         self.img_reference = self.img
 
         self.picture_label = Label(self.profile_frame, image=self.img)
@@ -341,7 +340,7 @@ class App:
             navigation_label.bind("<Leave>", lambda event, loc=next_destination: self.leave_nav(event, loc))
             navigation_label.bind("<Button-1>", lambda event, loc=next_destination: self.click_navigation(loc))
 
-    #controller
+    #CONTROLLER
     def show_start_frame(self):
         self.current_frame = self.start_frame
         self.start_frame.pack()
@@ -362,26 +361,21 @@ class App:
         self.top_level.title("Регистрация")
 
         ttk.Label(self.top_level, text="Потребител:").grid(row=0, column=0, padx=10, pady=10)
-        global username_entry
         self.username_entry = ttk.Entry(self.top_level, font=("Arial", 20))
         self.username_entry.grid(row=0, column=1, padx=10, pady=10)
 
         ttk.Label(self.top_level, text="Парола:").grid(row=1, column=0, padx=10, pady=10)
-        global password_entry
 
         self.password_entry = ttk.Entry(self.top_level, show="*", font=("Arial", 20))
         self.password_entry.grid(row=1, column=1, padx=10, pady=10)
 
         ttk.Label(self.top_level, text="Повтори Парола:").grid(row=2, column=0, padx=10, pady=10)
-        global rep_password_entry
         self.rep_password_entry = ttk.Entry(self.top_level, show="*", font=("Arial", 20))
         self.rep_password_entry.grid(row=2, column=1, padx=10, pady=10)
 
         ttk.Label(self.top_level, text="Е-поща:").grid(row=3, column=0, padx=10, pady=10)
-        global email_entry
         self.email_entry = ttk.Entry(self.top_level, font=("Arial", 20))
         self.email_entry.grid(row=3, column=1, padx=10, pady=10)
-        global day_var, month_var, year_entry
         ttk.Label(self.top_level, text="Рожденна дата:").grid(row=4, column=0, padx=10, pady=10)
         self.days = [f"{day:02d}" for day in range(1, 32)]
         self.day_var = StringVar(value="")
@@ -400,7 +394,6 @@ class App:
         self.register_button.bind("<Enter>", self.enter)
         self.register_button.bind("<Leave>", self.leave)
 
-        global message_label
         self.message_label = Label(self.top_level, text="", font=("Arial", 10), height=3)
         self.message_label.grid(row=6, column=0, padx=10, pady=10)
 
@@ -411,7 +404,6 @@ class App:
 
         self.messagelogin_label.config(text="", font=("Arial", 20))
 
-        global current_frame
         self.current_frame = self.app_frame
 
         mycursor.execute("select * from users")
@@ -429,8 +421,6 @@ class App:
             self.user1.user1_img_uploaded = img_path
             self.user1.name = entered_username
             self.user1.years = years
-            global terminal_first_msg_sent
-            global User_greeting
             self.start_frame.forget()
             if not self.User_greeting:
                 self.app_terminal.write(
@@ -442,7 +432,6 @@ class App:
                 self.terminal_first_msg_sent = True
             self.app_frame.after(200, self.check_birthday)
             self.start_frame.forget()
-            global current_user
             self.current_user = entered_username
             self.username_entry_login.delete(0, END)
             self.password_entry_login.delete(0, END)
@@ -572,9 +561,7 @@ class App:
             self.day1terminal_first_msg_sent = True
 
     def day2(self):
-        global current_frame
         self.current_frame = self.day2_frame
-        global current_terminal
         if len(self.terminal_list) > 0:
          self.current_terminal = self.terminal_list[1]
         self.day2_frame.pack()
@@ -589,9 +576,7 @@ class App:
             self.day2terminal_first_msg_sent = True
 
     def day3(self):
-        global current_frame
         self.current_frame = self.day3_frame
-        global current_terminal
         if len(self.terminal_list) > 0:
          self.current_terminal = self.terminal_list[2]
         self.day3_frame.pack()
@@ -606,9 +591,7 @@ class App:
             self.day3terminal_first_msg_sent = True
 
     def day4(self):
-        global current_frame
         self.current_frame = self.day4_frame
-        global current_terminal
         if len(self.terminal_list) > 0:
          self.current_terminal = self.terminal_list[3]
         self.day4_frame.pack()
@@ -623,7 +606,6 @@ class App:
             self.day4terminal_first_msg_sent = True
 
     def back_to_app(self):
-        global current_frame
         self.current_frame = self.app_frame
         self.app_frame.pack()
         self.day1_frame.forget()
@@ -770,7 +752,7 @@ class App:
         event.widget.config(relief=tkinter.RAISED)
         self.loc_dict[self.desttonav_dict[location]].config(relief=tkinter.RAISED)
 
-    #model
+    #MODEL
     def register(self, button_id):
         self.message_label.config(text="")
         self.username = self.username_entry.get()

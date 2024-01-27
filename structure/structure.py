@@ -60,7 +60,7 @@ class WeatherWidget:
         self.wind_label.config(relief=tkinter.SUNKEN)
         self.wind_label.pack()
 
-        self.api_key = '376865cfd8b0401e3523f32a0065c8f7'
+        self.api_key = '***'
         self.city = 'Barcelona'
         self.sunset_time = None
         self.update_weather_labels()
