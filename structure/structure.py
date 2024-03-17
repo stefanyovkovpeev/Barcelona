@@ -6,6 +6,7 @@ from tkinter import scrolledtext
 import pytz as pytz
 from login import login
 import requests
+from decouple import config
 
 #the abstract methods are because at fist it was built like a game and it had different players
 class Player(ABC):
@@ -60,7 +61,7 @@ class WeatherWidget:
         self.wind_label.config(relief=tkinter.SUNKEN)
         self.wind_label.pack()
 
-        self.api_key = '***'
+        self.api_key = config('YOUR_API_KEY')
         self.city = 'Barcelona'
         self.sunset_time = None
         self.update_weather_labels()
